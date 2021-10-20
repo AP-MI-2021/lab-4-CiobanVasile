@@ -3,7 +3,7 @@ def show_menu():
     print("2.Afisarea listei cu numerele avand doar partea intreaga ")
     print("3.Afisarea tuturor numerelor care aparțin unui interval deschis citit de la tastatură ")
     print("4.Afișarea tuturor numerelor a căror parte întreagă este divizor al părții fracționare ")
-
+    print("5.Afișarea listei obținute în care numerele sunt înlocuite cu un string format din cuvinte ")
     print("x.Iesire program")
 
 def read_list():
@@ -13,15 +13,6 @@ def read_list():
     for num_str in list_str_split:
         list.append(float(num_str))
     return list
-
-def is_divisor(number):
-    '''
-    Aceasta functie verifica daca un numar are partea intreaga divizor al partii fractionare
-    Input:
-    -Un numar n, care poate fi intreg sau float
-    Output:
-    -True sau False, daca numarul are partea intreaga divizor al partii fractionare sau nu
-    '''
 
 def get_divisors(list):
     '''
@@ -33,8 +24,14 @@ def get_divisors(list):
     '''
     new_list = []
     for i in list:
-        if is_divisor(float(i)):
-            new_list.append(i)
+        if i != int(i):
+            str_i = str(i)
+            whole = str_i.split('.')[0]
+            decimals = str_i.split('.')[1]
+            whole =int(whole)
+            decimals =int(decimals)
+            if decimals % whole == 0:
+                new_list.append(i)
 
     return new_list
 
@@ -52,7 +49,7 @@ def get_integer_part(list):
 
     return new_list
 
-def get_numbers_interval(list,a,b):
+def get_numbers_interval(list, a, b):
     '''
     Returneaza o lista cu numerele cuprinse intr-un interval deschis, care va fi citit de la tastatura
     Input:
@@ -68,6 +65,11 @@ def get_numbers_interval(list,a,b):
             new_list.append(i)
 
     return new_list
+
+def test_get_divisors():
+    assert get_divisors([1.5, -3.3, 8, 9.8, 3.2]) == [1.5, -3.3]
+    assert get_divisors([1.5, 1, 2, 3, 4]) == [1.5]
+    assert get_divisors([2.3, 3.4, 4.5]) == []
 
 def test_get_numbers_interval():
     assert get_numbers_interval([1.5, -3.3, 8, 9.8, 3.2], -4, 5) == [1.5, -3.3, 3.2]
@@ -89,8 +91,8 @@ def main():
         elif opt == '2':
             print("Afisarea listei cu numerele avand doar partea intreaga: ",get_integer_part(list))
         elif opt == '3':
-            a=input("Capatul din stanga intervalului: ")
-            b=input("Capatul din dreapta intervalului: ")
+            a=int(input("Capatul din stanga intervalului: "))
+            b=int(input("Capatul din dreapta intervalului: "))
             print("Afisarea listei cu numerele care apartin unui interval :",get_numbers_interval(list,a,b))
         elif opt=='4':
             print("Afisarea listei cu numerele care au partea intreaga divizor al partii fractionare: ",get_divisors(list))
@@ -99,8 +101,8 @@ def main():
         else:
             print("Optiune invalida ")
 
-
 if __name__ == '__main__':
     test_get_numbers_interval()
     test_get_integer_part()
+    test_get_divisors()
     main()
