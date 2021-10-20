@@ -138,6 +138,11 @@ def get_numbers_to_char(list):
 
     return new_list
 
+def test_get_numbers_to_char():
+    assert get_numbers_to_char([1.5])==['unuvirgulacinci']
+    assert get_numbers_to_char([1])==['unu']
+    assert get_numbers_to_char([-3.3])==['minustreivirgulatrei']
+
 def test_get_divisors():
     assert get_divisors([1.5, -3.3, 8, 9.8, 3.2]) == [1.5, -3.3]
     assert get_divisors([1.5, 1, 2, 3, 4]) == [1.5]
@@ -182,4 +187,5 @@ if __name__ == '__main__':
     test_get_numbers_interval()
     test_get_integer_part()
     test_get_divisors()
+    test_get_numbers_to_char()
     main()
