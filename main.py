@@ -66,20 +66,95 @@ def get_numbers_interval(list, a, b):
 
     return new_list
 
+def change_to_string(number):
+    '''
+    Aceasta functie este una ajutatoare pentru a schimba numarul intr-un sir de caractere
+    Input:
+    -Un numar float
+    Output:
+    -Un sir de caractere
+    '''
+    lista = ['zero','unu','doi','trei','patru','cinci','sase','sapte','opt','noua','virgula','minus']
+    str_number = str(number)
+    sir_final = ""
+    lungime = len(str_number)
+    if number != int(number):
+        for i in range(0,lungime):
+            if str_number[i] == '.':
+                sir_final = sir_final + lista[10]
+            elif str_number[i] == '-':
+                sir_final = sir_final + lista[11]
+            elif str_number[i] == '1':
+                sir_final = sir_final + lista[1]
+            elif str_number[i]== '2':
+                sir_final = sir_final + lista[2]
+            elif str_number[i] == '3':
+                sir_final = sir_final + lista[3]
+            elif str_number[i] == '4':
+                sir_final = sir_final + lista[4]
+            elif str_number[i] == '5':
+                sir_final = sir_final + lista[5]
+            elif str_number[i] == '6':
+                sir_final = sir_final + lista[6]
+            elif str_number[i] == '7':
+                sir_final = sir_final + lista[7]
+            elif str_number[i] == '8':
+                sir_final = sir_final + lista[8]
+            elif str_number[i] == '9':
+                sir_final = sir_final + lista[9]
+    else:
+        if str_number[0] == '1':
+            sir_final = sir_final + lista[1]
+        elif str_number[0] == '2':
+            sir_final = sir_final + lista[2]
+        elif str_number[0] == '3':
+            sir_final = sir_final + lista[3]
+        elif str_number[0] == '4':
+            sir_final = sir_final + lista[4]
+        elif str_number[0] == '5':
+            sir_final = sir_final + lista[5]
+        elif str_number[0] == '6':
+            sir_final = sir_final + lista[6]
+        elif str_number[0] == '7':
+            sir_final = sir_final + lista[7]
+        elif str_number[0] == '8':
+            sir_final = sir_final + lista[8]
+        elif str_number[0] == '9':
+            sir_final = sir_final + lista[9]
+
+    return sir_final
+
+def get_numbers_to_char(list):
+    '''
+    Aceasta functie returneaza o lista in care toate numerele sunt inlocuite cu un sir de caractere care il descriu
+    Input:
+    -O lista de numere float
+    Output:
+    -O lista de siruri de caractere care descriu numerele date initial caracter cu caracter
+    '''
+    new_list = []
+    for i in list:
+        new_list.append(change_to_string(i))
+
+    return new_list
+
 def test_get_divisors():
     assert get_divisors([1.5, -3.3, 8, 9.8, 3.2]) == [1.5, -3.3]
     assert get_divisors([1.5, 1, 2, 3, 4]) == [1.5]
+    assert get_divisors([1.4, 10, 20, 30]) == [1.4]
     assert get_divisors([2.3, 3.4, 4.5]) == []
 
 def test_get_numbers_interval():
     assert get_numbers_interval([1.5, -3.3, 8, 9.8, 3.2], -4, 5) == [1.5, -3.3, 3.2]
     assert get_numbers_interval([1, 2, 3, 4, 5, 6, 7, 8, 9], 3, 6) == [4, 5]
     assert get_numbers_interval([],3 , 5) == []
+    assert get_numbers_interval([1, 2, 3, 4, 5], 0, 6) == [1,2,3,4,5]
 
 def test_get_integer_part():
     assert get_integer_part([1.3,2,3.5]) == [1,2,3]
     assert get_integer_part([1.3,2.4,3.5,4.6]) == [1,2,3,4]
     assert get_integer_part([]) == []
+    assert get_integer_part([1,2,3])==[1,2,3]
 
 def main():
     list =[]
@@ -96,6 +171,8 @@ def main():
             print("Afisarea listei cu numerele care apartin unui interval :",get_numbers_interval(list,a,b))
         elif opt=='4':
             print("Afisarea listei cu numerele care au partea intreaga divizor al partii fractionare: ",get_divisors(list))
+        elif opt=='5':
+            print("Lista cu stringuri care descriu numerele caracter cu caracter: ",get_numbers_to_char(list))
         elif opt == 'x':
             break
         else:
