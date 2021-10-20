@@ -139,9 +139,9 @@ def get_numbers_to_char(list):
     return new_list
 
 def test_get_numbers_to_char():
-    assert get_numbers_to_char([1.5])==['unuvirgulacinci']
-    assert get_numbers_to_char([1])==['unu']
-    assert get_numbers_to_char([-3.3])==['minustreivirgulatrei']
+    assert get_numbers_to_char([1.5]) == ['unuvirgulacinci']
+    assert get_numbers_to_char([1]) == ['unu']
+    assert get_numbers_to_char([-3.3]) == ['minustreivirgulatrei']
 
 def test_get_divisors():
     assert get_divisors([1.5, -3.3, 8, 9.8, 3.2]) == [1.5, -3.3]
@@ -152,14 +152,14 @@ def test_get_divisors():
 def test_get_numbers_interval():
     assert get_numbers_interval([1.5, -3.3, 8, 9.8, 3.2], -4, 5) == [1.5, -3.3, 3.2]
     assert get_numbers_interval([1, 2, 3, 4, 5, 6, 7, 8, 9], 3, 6) == [4, 5]
-    assert get_numbers_interval([],3 , 5) == []
-    assert get_numbers_interval([1, 2, 3, 4, 5], 0, 6) == [1,2,3,4,5]
+    assert get_numbers_interval([], 3 , 5) == []
+    assert get_numbers_interval([1, 2, 3, 4, 5], 0, 6) == [1, 2, 3, 4, 5]
 
 def test_get_integer_part():
-    assert get_integer_part([1.3,2,3.5]) == [1,2,3]
-    assert get_integer_part([1.3,2.4,3.5,4.6]) == [1,2,3,4]
+    assert get_integer_part([1.3, 2, 3.5]) == [1, 2, 3]
+    assert get_integer_part([1.3, 2.4, 3.5, 4.6]) == [1, 2, 3, 4]
     assert get_integer_part([]) == []
-    assert get_integer_part([1,2,3])==[1,2,3]
+    assert get_integer_part([1, 2, 3]) == [1, 2, 3]
 
 def main():
     list =[]
@@ -167,16 +167,16 @@ def main():
         show_menu()
         opt = input("Optiunea aleasa: ")
         if opt == '1':
-            list=read_list()
+            list = read_list()
         elif opt == '2':
             print("Afisarea listei cu numerele avand doar partea intreaga: ",get_integer_part(list))
         elif opt == '3':
-            a=int(input("Capatul din stanga intervalului: "))
-            b=int(input("Capatul din dreapta intervalului: "))
+            a = int(input("Capatul din stanga intervalului: "))
+            b = int(input("Capatul din dreapta intervalului: "))
             print("Afisarea listei cu numerele care apartin unui interval :",get_numbers_interval(list,a,b))
-        elif opt=='4':
+        elif opt == '4':
             print("Afisarea listei cu numerele care au partea intreaga divizor al partii fractionare: ",get_divisors(list))
-        elif opt=='5':
+        elif opt == '5':
             print("Lista cu stringuri care descriu numerele caracter cu caracter: ",get_numbers_to_char(list))
         elif opt == 'x':
             break
